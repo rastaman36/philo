@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:34:59 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/04/26 10:39:55 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/05/05 21:43:44 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_data
 	int             philo_num;
 	int             meals_nb;
 	int             dead;
-	int             finished;
+	int				finish;
 	t_philo         *philos;
 	u_int64_t       death_time;
 	u_int64_t       eat_time;
