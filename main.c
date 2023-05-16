@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:34:44 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/05/05 22:01:41 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/05/16 12:35:08 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ void	ft_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
+}
+
+void    print_status(int n)
+{
+    if (n == 1)
+        printf("philo has taken a fork");
+	else if (n == 2)
+		printf("philo is eating");
+	else if (n == 3)
+		printf("phile is sleeping");
+	else if (n == 4)
+		printf("philo is thinking");
+	else if (n == 5)
+		printf("philo is died");
 }
 
 int	ft_atoi(const char *str)
@@ -48,7 +62,7 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-int	 valide_input(char **argv)
+int	 check_valid_args(char **argv)
 {
 	int	i;
 	int	j;
@@ -192,48 +206,44 @@ int	ft_usleep(useconds_t time)
 	return(0);
 }
 
-// void    *routine(t_philo *dt)
-// {
-
-//     pthread_mutex_t	mutex;
-// 	pthread_mutex_init(&mutex, NULL);
-
-//     while ()
-//     {
-//         dt->data->start_time = get_time();
+void    *routine(t_philo *dt)
+{
+    while (1)
+    {
+        dt->data->start_time = get_time();
         
-//     //we start by thinking of philo(he think whenever he can't eat)
+    //we start by thinking of philo(he think whenever he can't eat)
     
                 
-//                 //when he think display "Philo x is thinking"
+                //when he think display "Philo x is thinking"
     
     
 
 
-//     // here eating / 4 :
+    // here eating / 4 :
     
-//     // 1 : -----> picking 2 forks
+    // 1 : -----> picking 2 forks
 
-//         pthread_mutex_lock(&mutex);
+        pthread_mutex_lock(&mutex);
         
                 
     
 
-//     // 2 : ------> eating
+    // 2 : ------> eating
 
-//                 //when he eat update the status and display "Philo x is eat"
-
-
-//     // 3 : -------> dropping the forks
+                //when he eat update the status and display "Philo x is eat"
 
 
-//     // 4 : --------> sleping 
+    // 3 : -------> dropping the forks
 
 
-//                     //when  he slep update the status and display "Philo x is sleep"
+    // 4 : --------> sleping 
+
+
+                    //when  he slep update the status and display "Philo x is sleep"
     
-//     }    
-// }
+    }    
+}
 
 int main(int ac, char **av)
 {
@@ -241,10 +251,12 @@ int main(int ac, char **av)
 
     int a = 0;
 	
-	if (ac < 5 || ac > 6)
-		return (1);
-	valide_input(av);
+	// if (ac < 5 || ac > 6)
+	// 	return (1);
+	check_valid_args(av);
 	initialization(dt, av, ac);
+	// u_int64_t r = get_time();
+    // printf("%llu", r);
 	
 	
     // while (a < ac)
@@ -261,8 +273,7 @@ int main(int ac, char **av)
     // pthread_t   tid;
     // pthread_create(&tid, NULL, &routine, &dt);
 
-    // u_int64_t r = get_time();
-    // printf("%llu", r);
+ 
     
 
 }
