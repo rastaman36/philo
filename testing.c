@@ -6,35 +6,50 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:31:26 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/04/24 09:19:33 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:45:07 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pthread.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <time.h>
-#include <stdlib.h>
+#include "philo.h"
 
-void*    roll_dice()
+int	ft_error(void)
 {
-    int value = (rand() % 6) + 1;
-    int *result = malloc(sizeof(int));
-    *result = value;
-    printf("Thread result : %p\n", result);
-    return (void *)result;
+	write(2, "Error\n", 6);
+	return (0);
 }
 
-int main(int ac, char **av)
+// int	allocation_data(t_data *data)
+// {
+// 	// data->tid = malloc(sizeof(pthread_t) * data->philo_num);
+// 	// if (!data->tid)
+// 	// 	ft_error();
+// 	// data->forks = malloc(sizeof(pthread_mutex_t) * data->philo_num);
+// 	// if (!data->forks)
+// 	// 	ft_error();
+// 	data->philos = malloc(sizeof(t_philo);
+// 	if (!data->philos)
+// 		ft_error();
+// 	return (0);
+// }
+
+u_int64_t	get_time(void)
 {
-    int* res;
-    srand(time(NULL));
-    pthread_t   th;
-    if (pthread_create(&th, NULL, &roll_dice, NULL) != 0)
-        return (1);
-    if (pthread_join(th, (void **) &res) != 0)
-        return (2);
-    printf("Main res : %p\n", res);
-    printf("resulst %d\n", *res);
-    return (0);
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL))
+		perror("FAIL");
+	return ((time.tv_sec * (u_int64_t)1000) + (time.tv_usec / 1000));
+}
+
+void	print(char *str, t_philo *dt)
+{
+	printf(str, dt->id, get_time());
+}
+
+int main ()
+{
+    t_data *dt = malloc(sizeof(t_data));
+    dt->philos = malloc(sizeof(t_philo));
+    dt->philos->id  = 1;
+    print("philo number %d is eating. time : %llu", dt->philos);
 }

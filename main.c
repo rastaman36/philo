@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:34:44 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/05/16 12:35:08 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:49:38 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,18 +157,18 @@ int	data_initialization(t_data *data, char **av, int ac)
 			ft_error();
 	data->dead = 0;
 	data->finish = 0;
-	pthread_mutex_init(&data->write, NULL);
-	pthread_mutex_init(&data->lock, NULL);
+	// pthread_mutex_init(&data->write, NULL);
+	// pthread_mutex_init(&data->lock, NULL);
 	return (0);
 }
 
-void	initialization(t_data *data, char **av, int ac)
-{
-	data_initialization(data, av, ac);
-	allocation_data(data);
-	forks_initialization(data);
-	philos_initialization(data);
-}
+// void	initialization(t_data *data, char **av, int ac)
+// {
+// 	data_initialization(data, av, ac);
+// 	allocation_data(data);
+// 	forks_initialization(data);
+// 	philos_initialization(data);
+// }
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -206,25 +206,23 @@ int	ft_usleep(useconds_t time)
 	return(0);
 }
 
+void	print(char *str, t_philo *dt)
+{
+	printf(str, get_time(), &dt->id);
+}
+
 void    *routine(t_philo *dt)
 {
     while (1)
     {
-        dt->data->start_time = get_time();
-        
-    //we start by thinking of philo(he think whenever he can't eat)
-    
-                
-                //when he think display "Philo x is thinking"
-    
-    
-
-
-    // here eating / 4 :
-    
     // 1 : -----> picking 2 forks
 
-        pthread_mutex_lock(&mutex);
+        pthread_mutex_lock(dt->l_fork);
+		pthread_mutex_lock(dt->r_fork);
+		
+
+		
+		
         
                 
     
@@ -253,8 +251,13 @@ int main(int ac, char **av)
 	
 	// if (ac < 5 || ac > 6)
 	// 	return (1);
-	check_valid_args(av);
-	initialization(dt, av, ac);
+	print("philo is eating %llu number %d", dt->philos);
+	// check_valid_args(av);
+	// initialization(dt, av, ac);
+	// while (a < dt->philo_num)
+	// {
+		
+	// }
 	// u_int64_t r = get_time();
     // printf("%llu", r);
 	
