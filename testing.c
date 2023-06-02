@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:31:26 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/05/17 15:45:07 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:58:21 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,27 @@ u_int64_t	get_time(void)
 	return ((time.tv_sec * (u_int64_t)1000) + (time.tv_usec / 1000));
 }
 
-void	print(char *str, t_philo *dt)
+void	ft_msg(t_philo *philo, size_t timestamp, int action)
 {
-	printf(str, dt->id, get_time());
+	// pthread_mutex_lock(&philo->data->write);
+	if (action == TAKING_FORK)
+		printf("%zu %zu has taken a fork 🍽\n", timestamp, philo->id);
+	else if (action == EATING)
+		printf("%zu %zu is eating 🍕\n", timestamp, philo->id);
+	else if (action == SLEEPING)
+		printf("%zu %zu is sleeping 💤\n", timestamp, philo->id);
+	else if (action == THINKING)
+		printf("%zu %zu is thinking 💭\n", timestamp, philo->id);
+	else if (action == DIED)
+		printf("%zu %zu died 💀\n", timestamp, philo->id);
+	else if (action == OVER)
+		printf("%zu %zu has finished his meals 🤢\n", timestamp, philo->id);
+	// pthread_mutex_unlock(&philo->data->write);
 }
 
 int main ()
 {
     t_data *dt = malloc(sizeof(t_data));
     dt->philos = malloc(sizeof(t_philo));
-    dt->philos->id  = 1;
-    print("philo number %d is eating. time : %llu", dt->philos);
+	ft_msg(dt->philos, get_time(), TAKING_FORK);
 }

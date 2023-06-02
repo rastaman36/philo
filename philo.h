@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:34:59 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/05/17 15:30:40 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:33:46 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,21 @@
 # include <sys/time.h>
 # include <errno.h>
 
+typedef enum e_action
+{
+	TAKING_FORK,
+	EATING,
+	SLEEPING,
+	THINKING,
+	DIED,
+	OVER,
+}				t_action;
 
 typedef struct s_philo
 {
 	struct s_data	*data;
 	pthread_t       t1;
-	int             id;
+	size_t          id;
 	int             eat_cont;
 	int             status;
 	int             eating;
@@ -54,5 +63,18 @@ typedef struct s_data
 	pthread_mutex_t lock;
 	pthread_mutex_t write;
 } t_data;
+
+
+
+int			forks_initialization(t_data *data);
+void		philos_initialization(t_data *data);
+int			data_initialization(t_data *data, char **av, int ac);
+int			ft_atoi(const char *str);
+void		*ft_calloc(size_t count, size_t size);
+u_int64_t	get_time(void);
+int			ft_usleep(useconds_t time);
+int	 		check_valid_args(char **argv);
+int			ft_error(void);
+
 
 #endif
