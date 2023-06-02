@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:34:59 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/01 16:33:46 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/02 16:23:50 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ u_int64_t	get_time(void);
 int			ft_usleep(useconds_t time);
 int	 		check_valid_args(char **argv);
 int			ft_error(void);
+void		msg_printer(t_philo *philo, size_t timestamp, int action);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:34:44 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/01 17:22:44 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/02 16:27:24 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,16 @@ void	msg_printer(t_philo *philo, size_t timestamp, int action)
 
 int main(int ac, char **av)
 {
-    t_data *dt;
 	t_philo *philo;
 
-
+	t_data *dt = malloc(sizeof(t_data));
 	if (ac < 5 || ac > 6)
 		return (1);
 	if (check_valid_args(av))
 		return (1);
-	printf("clear");
 	if (initialization(dt, av, ac))
 		return (1);
+	// msg_printer(philo, get_time(), TAKING_FORK);
 
 
 }
