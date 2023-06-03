@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:34:59 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/02 16:23:50 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/03 01:00:04 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,16 @@ typedef struct s_data
 	int             meals_nb;
 	int             dead;
 	int				finish;
+	unsigned int 	*last_eating;
 	t_philo         *philos;
 	u_int64_t       death_time;
 	u_int64_t       eat_time;
 	u_int64_t       sleep_time;
 	u_int64_t       start_time;
-	pthread_mutex_t *forks;
+	pthread_mutex_t *forkss;
 	pthread_mutex_t lock;
 	pthread_mutex_t write;
+	unsigned long t0;
 } t_data;
 
 
@@ -75,7 +77,7 @@ u_int64_t	get_time(void);
 int			ft_usleep(useconds_t time);
 int	 		check_valid_args(char **argv);
 int			ft_error(void);
-void		msg_printer(t_philo *philo, size_t timestamp, int action);
+void		msg_printer(t_philo *philo, size_t timestamp, int action, int id);
 
 
 #endif

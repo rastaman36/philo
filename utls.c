@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:05:47 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/01 15:10:14 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/03 00:37:48 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ int	ft_usleep(useconds_t time)
 	u_int64_t	start;
 	start = get_time();
 	while ((get_time() - start) < time)
-		usleep(time / 10);
+	{
+		usleep(50);
+	}
 	return(0);
 }
 
