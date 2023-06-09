@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:05:47 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/03 00:37:48 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/09 02:01:44 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,41 @@ int	ft_usleep(useconds_t time)
 	u_int64_t	start;
 	start = get_time();
 	while ((get_time() - start) < time)
-	{
-		usleep(50);
-	}
+        ;
 	return(0);
 }
 
-int	 check_valid_args(char **argv)
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	ft_strlen(char *str)
 {
 	int	i;
-	int	j;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	check_valid_args(char **argv)
+{
+	int	i;
+	int	n;
 
 	i = 1;
 	while (argv[i])
 	{
-		j = 0;
-		while (argv[i][j])
+		n = 0;
+		while (ft_strlen(argv[i]) > n)
 		{
-			if (argv[i][j] == ' ')
-			{
-				j++;
-				continue ;
-			}
-			if ((argv[i][j] < 48 || argv[i][j] > 57))
-				ft_error();
-			j++;
+			if (!ft_isdigit(argv[i][n]))
+				return (1);
+			n++;
 		}
 		i++;
 	}
