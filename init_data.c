@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:02:28 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/09 15:48:53 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/14 12:15:03 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,18 @@ void	philos_initialization(t_data *data)
 		data->philos[i].id = i;
 		data->philos[i].number_of_meals = 0;
 		data->philos[i].last_eating = 0;
+		data->philos[i].data_race2 = malloc(sizeof(pthread_mutex_t));
+		pthread_mutex_init(data->philos[i].data_race2, NULL);
+		data->philos[i].dead = 1;
 		i++;
 	}
 }
 
-
 int	data_initialization(t_data *data, char **av, int ac)
 {
-	int a = 0;
+	int	a;
+
+	a = 0;
 	data->philo_num = (int) ft_atoi(av[1]);
 	data->death_time = (u_int64_t) ft_atoi(av[2]);
 	data->eat_time = (u_int64_t) ft_atoi(av[3]);
@@ -41,10 +45,10 @@ int	data_initialization(t_data *data, char **av, int ac)
 		data->meals_nb = -1;
 	if (data->philo_num <= 0 || data->philo_num > 200 || data->death_time < 0
 		|| data->eat_time < 0 || data->sleep_time < 0)
-			ft_error();
+		return (0);
 	data->forkss = malloc(sizeof(pthread_mutex_t) * (data->philo_num));
 	if (!data->forkss)
-		ft_error();
+		return (0);
 	while (a < data->philo_num)
 		pthread_mutex_init(&data->forkss[a++], NULL);
 	pthread_mutex_init(&data->write, NULL);
@@ -56,10 +60,10 @@ int	allocation_data(t_data *data)
 {
 	data->philos = malloc(sizeof(t_philo) * data->philo_num);
 	if (!data->philos)
-		ft_error();
+		return (0);
 	data->tid = malloc(sizeof(pthread_t) * data->philo_num);
 	if (!data->tid)
-		ft_error();
+		return (0);
 	return (0);
 }
 

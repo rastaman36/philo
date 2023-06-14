@@ -6,7 +6,7 @@
 #    By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/21 23:34:36 by mochaoui          #+#    #+#              #
-#    Updated: 2023/06/09 16:08:20 by mochaoui         ###   ########.fr        #
+#    Updated: 2023/06/14 11:56:02 by mochaoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS =	main.c				\
 		init_data.c			\
 		utls.c 				\
 		sonar.c 			\
+		valide_args.c		\
 		
 all : $(NAME)
 
