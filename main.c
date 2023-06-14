@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 23:34:44 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/14 16:48:02 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:03:59 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*routine(void *data)
 
 	dt = (t_philo *)data;
 	dt->eat = 0;
-	dt->id = dt->id;
+	dt->id2 = dt->id;
 	dt->i = (dt->id + 1) % dt->data->philo_num;
 	while (1)
 	{
