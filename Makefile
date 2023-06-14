@@ -6,12 +6,12 @@
 #    By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/21 23:34:36 by mochaoui          #+#    #+#              #
-#    Updated: 2023/06/14 11:56:02 by mochaoui         ###   ########.fr        #
+#    Updated: 2023/06/14 22:26:40 by mochaoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-FLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread
+FLAGS = -Wall -Wextra -Werror -pthread
 
 SRCS =	main.c				\
 		init_data.c			\

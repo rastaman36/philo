@@ -6,9 +6,11 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:55:03 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/14 12:31:39 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/14 22:46:17 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "philo.h"
 
 int	ft_isdigit(int c)
 {
@@ -39,6 +41,8 @@ int	check_valid_args(char **argv)
 		while (ft_strlen(argv[i]) > n)
 		{
 			if (!ft_isdigit(argv[i][n]))
+				return (1);
+			if (argv[i][n] == ' ')
 				return (1);
 			n++;
 		}

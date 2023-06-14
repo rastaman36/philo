@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:05:47 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/14 12:05:47 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/14 21:42:25 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,6 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*s;
-	size_t	i;
-
-	i = 0;
-	s = (char *)malloc(count * size);
-	if (!s)
-		return (NULL);
-	while (i < (count * size))
-	{
-		s[i] = 0;
-		i++;
-	}
-	return (s);
-}
-
 u_int64_t	get_time(void)
 {
 	struct timeval	time;
@@ -73,6 +56,6 @@ int	ft_usleep(useconds_t time)
 
 	start = get_time();
 	while ((get_time() - start) < time)
-		;
+		usleep(50);
 	return (0);
 }

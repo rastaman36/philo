@@ -6,7 +6,7 @@
 /*   By: mochaoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:02:28 by mochaoui          #+#    #+#             */
-/*   Updated: 2023/06/14 12:15:03 by mochaoui         ###   ########.fr       */
+/*   Updated: 2023/06/14 22:44:41 by mochaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int	data_initialization(t_data *data, char **av, int ac)
 		data->meals_nb = (int) ft_atoi(av[5]);
 	else
 		data->meals_nb = -1;
+	if (data->meals_nb == 0 || data->death_time == 0
+		|| data->eat_time == 0 || data->sleep_time == 0 || data->philo_num == 0)
+		return (1);
 	if (data->philo_num <= 0 || data->philo_num > 200 || data->death_time < 0
 		|| data->eat_time < 0 || data->sleep_time < 0)
 		return (0);
